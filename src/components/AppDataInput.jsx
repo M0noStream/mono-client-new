@@ -5,7 +5,7 @@ export default class AppDataInput extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            isTransacted: false,
+            isTransacted: true,
             innerDepthQueue: 100,
             agentName: ""
         }

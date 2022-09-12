@@ -6,31 +6,7 @@ export default class Manage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      streams: [{
-          streamName:'First One',
-          IsTransacted: true,
-          InnerDepthQueue: 100,
-          status:'active',
-          Source: {
-            TypeName: "Kafka",
-            Cluster: "localhost:9092",
-            ConsumerGroup: "monostream-group",
-            AutoCommit: false,
-            ConsumeTimeoutMS: 800,
-            Username: "admin",
-            Password: "admon",
-            SourceName: "my.cars"
-          },
-          Destination: {
-            TypeName: "Rabbit",
-            Cluster: "localhost:4000",
-            Vhost: "host",
-            Username: "admin",
-            Password: "admin",
-            Exchange: "exchange",
-            SourceName: "cars.queue"
-          }
-      }, { streamName: "2", status: "active" }],
+      streams: this.props.streams,
       chunkedStreams: [],
       streamPages: [],
       showingRaw: false,
