@@ -15,14 +15,17 @@ export default class Manage extends Component {
     }
   }
 
-  componentDidMount = () => {
+  componentDidMount = async () => {
     if(this.state.streams.length === 0 ){
       return
     }
-    this.splitStreamsToPages()
-    setTimeout(() => {
-      this.splitPages(this.state.streamPages[this.state.currentPage])
-    }, 100);
+    this.setState({streamPages:[]}, () => {
+      this.splitStreamsToPages()
+      setTimeout(() => {
+        this.splitPages(this.state.streamPages[this.state.currentPage])
+      }, 100);
+    })
+
   }
 
   maxPageNum = () => {

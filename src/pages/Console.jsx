@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import Create from './Create.jsx';
 import Manage from './Manage.jsx';
-import './Console.css'
 import { get_streams } from '../services/Streams.js';
+import './Console.css'
 export default class Console extends Component {
   constructor(props){
     super(props);
@@ -15,11 +15,14 @@ export default class Console extends Component {
 
   componentDidMount = async () => {
     await this.refreshData()
-    this.setState({renderComponent: <Manage streams={this.state.streams}/>})
+    setTimeout(() => {
+      this.setState({renderComponent: <Manage refreshData={this.refreshData} streams={this.state.streams}/>})
 
+    }, 100);
   }
 
   refreshData = async () => {
+    this.setState({streams: []})
     try{
       let response = await get_streams()
       this.setState({streams: response.data})
@@ -28,14 +31,15 @@ export default class Console extends Component {
     }
   }
 
-  onChangeMenu = (e) => {
+  onChangeMenu = async (e) => {
     let id = e.target.id
     switch(id){
       case '0':
-        this.setState({renderComponent: <Create/>, activeId:0})
+        this.setState({renderComponent: <Create goToManage={this.onChangeMenu}/>, activeId:0})
         break;
       case '1':
-        this.setState({renderComponent: <Manage streams={this.state.streams}/>, activeId:1})
+        this.setState({renderComponent: <Manage refreshData={this.refreshData} streams={this.state.streams}/>, activeId:1})
+        this.refreshData()
         break;
       default:
         this.setState({renderComponent: <div>Error</div>})

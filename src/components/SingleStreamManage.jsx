@@ -11,6 +11,18 @@ export default class SingleStreamManage extends Component {
     }
   }
 
+  refreshData = async () => {
+    try{
+      let response = await streams.get_stream(this.state.stream.id)
+      console.log(response);
+      setTimeout(() => {
+        this.setState({stream: response.data})
+      }, 100);
+    } catch (e){
+      console.log(e);
+    }
+  }
+
   deleteStream = async () => {
     if(!this.state.readyDelete){
       this.setState({readyDelete:true})
@@ -19,7 +31,7 @@ export default class SingleStreamManage extends Component {
     const streamId = this.state.stream.id;
     try {
         await streams.delete_stream(streamId)
-        await this.props.refreshData()
+        window.location.reload(false)
     } catch (e) {
         console.error('error: ', e);
     }
@@ -29,7 +41,9 @@ export default class SingleStreamManage extends Component {
     const streamId = this.state.stream.id;
     try {
         await streams.start_stream(streamId)
-        await this.props.refreshData()
+        setTimeout(async() => {
+          await this.refreshData()
+        }, 100);
     } catch (e) {
         console.error('error: ', e);
     }
@@ -39,14 +53,16 @@ export default class SingleStreamManage extends Component {
     const streamId = this.state.stream.id;
     try {
         await streams.stop_stream(streamId)
-        await this.props.refreshData()
+        setTimeout(async() => {
+          await this.refreshData()
+        }, 100);
     } catch (e) {
         console.error('error: ', e);
     }
   }
 
   onStopStart = async () =>{
-    if(this.state.stream.status==="active"){
+    if(this.state.stream.status==="Active"){
       await this.stopStream()
       return
     } 
@@ -61,13 +77,13 @@ export default class SingleStreamManage extends Component {
     return (
       <div className='single-stream-block'>
         <p>
-          <b>{this.state.stream.streamName}</b>
+          <b>{this.state.stream.agentName}</b>
           Status: {this.state.stream.status}
           <button className='single-button' onClick={this.showRaw}>Inspect</button>
           <div style={{width:'100%', height:'0.1px', backgroundColor:'black'}}/>
           <div style={{display:'flex', flexDirection:'row', justifyContent:'center'}}>
             <button className='single-button' style={{color:'red'}} onClick={this.deleteStream}>{this.state.readyDelete?"Confirm":"Delete"}</button>
-            <button className='single-button' onClick={this.onStopStart}>{this.state.stream.status==="active"?"Stop":"Start"}</button>
+            <button className='single-button' onClick={this.onStopStart}>{this.state.stream.status==="Active"?"Stop":"Start"}</button>
           </div>
 
         </p>

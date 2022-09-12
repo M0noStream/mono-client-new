@@ -27,7 +27,7 @@ const delete_stream = async (stream_id) => {
     try{
         return await axios.get(url);
     } catch (e) {
-        console.log('in Stream.get_stream');
+        console.log('in Stream.get_streams');
         console.log(e);
     }
 }
@@ -62,10 +62,21 @@ const stop_stream = async (stream_id) => {
     }
 }
 
+const get_stream = async(stream_id) => {
+    let url = api_add + "/streams/" + stream_id
+    try{
+        return await axios.get(url);
+    } catch (e) {
+        console.log('in Stream.get_stream');
+        console.log(e);
+    }
+}
+
 export {
     delete_stream,
     get_streams,
     create_stream,
     start_stream,
-    stop_stream
+    stop_stream,
+    get_stream
 }

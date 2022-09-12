@@ -46,7 +46,7 @@ export default class AppDataInput extends Component {
                     <div className='data-form-labelinput'>
                         <label htmlFor='AgentName' className='console-content-input'>Agent Name</label>
                         <div className='input-container'>
-                            <input id='AgentName' checked={this.state.agentName} type="text" onChange={this.handleAgentName} />
+                            <input id='AgentName' value={this.state.agentName} type="text" onChange={this.handleAgentName} />
                         </div>
                     </div>
                     <div className='data-form-labelinput'>

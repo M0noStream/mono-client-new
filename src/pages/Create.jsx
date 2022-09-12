@@ -28,6 +28,9 @@ export default class Create extends Component {
         this.setState({loading:true})
         try{
             await create_stream(AppData);
+            setTimeout(() => {
+                window.location.reload(false);
+            }, 100);
         } catch (e){
             this.setState({error: true})
         } finally {
