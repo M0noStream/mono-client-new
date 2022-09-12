@@ -1,0 +1,95 @@
+.console-main {
+    display: grid;
+    grid-template-columns: .3fr 1fr;
+    grid-template-rows: 1fr;
+    grid-column-gap: 10px;
+    grid-row-gap: 0px;
+    height: 90%;
+    width: 90%;
+    border-radius: 20px;
+    -webkit-box-shadow: 5px 5px 41px 4px rgba(0,0,0,0.43); 
+    box-shadow: 5px 5px 41px 4px rgba(0,0,0,0.43);
+}
+    
+.console-menu {
+    grid-area: 1 / 1 / 6 / 2; 
+    width: 100%;
+    border-radius: 19px 0 0 19px;
+    border-right: 1px solid black;
+
+}
+
+.console-menu-button {
+    background: none;
+    display: block;
+    border: 0;
+    cursor: pointer;
+    width:100%;
+    height: 10%;
+    transition: 1s
+}
+
+.console-menu-button-active {
+    background: none;
+    display: block;
+    border: 0;
+    cursor: pointer;
+    width:100%;
+    height: 90%;
+    transition: 1s
+
+
+}
+
+.console-content { 
+    grid-area: 1 / 2 / 2 / 3; 
+    padding: 10px;
+    border-radius: 0 19px 19px 0;
+    width:100%;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+} 
+
+.form-container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: top;
+    
+}
+
+.console-content-input{
+    display: block;
+
+}
+
+.data-form-labelinput{
+    display: flex;
+    padding: 20px;
+}
+
+.data-form-labelinput label{
+    width: 200px;
+}
+
+.input-container{
+    width:200px;
+    display: flex;
+    justify-content: center;
+}
+
+.data-form-buttons{
+    position: relative;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    width: 100%;
+    margin-top: 40px;
+}
+
+.data-form-buttons button{
+    margin: 10px;
+    width:100px;
+}
