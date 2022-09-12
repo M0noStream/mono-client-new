@@ -8,8 +8,8 @@ export default class SourceDataInput extends Component {
             typeName: "",
             cluster: "",
             consumerGroup: "",
-            autoCommit: false,
-            consumeTimeoutMS: 1000,
+            autoCommit: true,
+            consumeTimeoutMS: 10000,
             username: "",
             password: "",
             sourceName: ""
