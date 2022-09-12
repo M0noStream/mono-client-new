@@ -16,6 +16,9 @@ export default class Manage extends Component {
   }
 
   componentDidMount = () => {
+    if(this.state.streams.length === 0 ){
+      return
+    }
     this.splitStreamsToPages()
     setTimeout(() => {
       this.splitPages(this.state.streamPages[this.state.currentPage])
