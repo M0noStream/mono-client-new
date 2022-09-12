@@ -47,7 +47,7 @@ const start_stream = async (stream_id) => {
     try{
         return await axios.put(url);
     } catch (e) {
-        console.log('in Stream.create_stream');
+        console.log('in Stream.start_stream');
         console.log(e);
     }
 }
@@ -57,7 +57,7 @@ const stop_stream = async (stream_id) => {
     try{
         return await axios.put(url);
     } catch (e) {
-        console.log('in Stream.create_stream');
+        console.log('in Stream.stop_stream');
         console.log(e);
     }
 }

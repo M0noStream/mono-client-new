@@ -5,14 +5,14 @@ export default class SourceDataInput extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            TypeName: "",
-            Cluster: "",
-            ConsumerGroup: "",
-            AutoCommit: false,
-            ConsumeTimeoutMS: 1000,
-            Username: "",
-            Password: "",
-            SourceName: ""
+            typeName: "",
+            cluster: "",
+            consumerGroup: "",
+            autoCommit: false,
+            consumeTimeoutMS: 1000,
+            username: "",
+            password: "",
+            sourceName: ""
         }
     }
 
@@ -24,24 +24,24 @@ export default class SourceDataInput extends Component {
 
     handleTypeName = (e) => {
         let value = e.target.value
-        this.setState({ TypeName: value })
+        this.setState({ typeName: value })
     }
 
     handleCluster = (e) => {
         let value = e.target.value
-        this.setState({ Cluster: value })
+        this.setState({ cluster: value })
 
     }
 
     handleConsumerGroup = (e) => {
         let value = e.target.value
-        this.setState({ ConsumerGroup: value })
+        this.setState({ consumerGroup: value })
 
     }
 
     handleAutoCommit = (e) => {
         let checked = e.target.checked
-        this.setState({ AutoCommit: checked })
+        this.setState({ autoCommit: checked })
 
     }
 
@@ -50,24 +50,24 @@ export default class SourceDataInput extends Component {
         if (!isNaN(value)) {
             return
         }
-        this.setState({ ConsumeTimeoutMS: value })
+        this.setState({ consumeTimeoutMS: value })
 
     }
 
     handleUsername = (e) => {
         let value = e.target.value
-        this.setState({ Username: value })
+        this.setState({ username: value })
     }
 
     handlePassword = (e) => {
         let value = e.target.value
-        this.setState({ Password: value })
+        this.setState({ password: value })
 
     }
 
     handleSourceName = (e) => {
         let value = e.target.value
-        this.setState({ SourceName: value })
+        this.setState({ sourceName: value })
 
     }
 

@@ -23,9 +23,8 @@ export default class Create extends Component {
 
     onCreate = async () =>{
         let AppData = this.state.appData
-        AppData.Source = this.state.sourceData
-        AppData.Destination = this.state.destinationData
-        console.log(AppData);
+        AppData.source = this.state.sourceData
+        AppData.destination = this.state.destinationData
         this.setState({loading:true})
         try{
             await create_stream(AppData);

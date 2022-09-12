@@ -7,14 +7,16 @@ export default class Console extends Component {
   constructor(props){
     super(props);
     this.state={
-      renderComponent: <Create/>,
-      activeId:0,
+      renderComponent: null,
+      activeId:1,
       streams: []
     }
   }
 
   componentDidMount = async () => {
     await this.refreshData()
+    this.setState({renderComponent: <Manage streams={this.state.streams}/>})
+
   }
 
   refreshData = async () => {
