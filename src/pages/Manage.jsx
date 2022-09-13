@@ -11,15 +11,17 @@ export default class Manage extends Component {
       streamPages: [],
       showingRaw: false,
       rawStream: {},
-      currentPage: 0
+      currentPage: 0,
+      noAvailable: false
     }
   }
 
   componentDidMount = async () => {
     if(this.state.streams.length === 0 ){
+      this.setState({noAvailable: true})
       return
     }
-    this.setState({streamPages:[]}, () => {
+    this.setState({streamPages:[], noAvailable: true}, () => {
       this.splitStreamsToPages()
       setTimeout(() => {
         this.splitPages(this.state.streamPages[this.state.currentPage])
@@ -90,7 +92,8 @@ export default class Manage extends Component {
           </div>
           : null}
         <div style={{height:'500px'}}>
-          {this.state.chunkedStreams.map((chunk, indexA) => {
+          {this.state.noAvailable?<div>No available agents, go to create to create one!</div>:
+          this.state.chunkedStreams.map((chunk, indexA) => {
             return (<div style={{ width: '100%', padding: '10px', display: 'flex', flexDirection: 'row' }} key={'out' + indexA}>
               {chunk.map((stream, indexB) => {
                 return (
@@ -98,7 +101,8 @@ export default class Manage extends Component {
                 )
               })}
             </div>)
-          })}
+          })
+        }
         </div>
         {this.maxPageNum() > 0 ?
           <div className='pages-buttons'>
